@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-
 public class Main {
     public static void main(String[] args){
         ArrayList<Service> list = new ArrayList<Service>();
@@ -27,7 +26,7 @@ public class Main {
                 }
                 if (list.get(i) instanceof Caffee) {
                     System.out.println(list.get(i).cook("Кофе"));
-                    System.out.println(list.get(i).cook("Пивас"));
+                    System.out.println(list.get(i).cook("Авиация"));
                 }
                 if (list.get(i) instanceof Bar) {
                     System.out.println(list.get(i).cook("Дерби"));

@@ -1,4 +1,4 @@
 public interface Service {
-    String cook(String name);
+     String cook(String name);
 
 }

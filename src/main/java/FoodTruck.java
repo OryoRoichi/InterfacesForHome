@@ -1,18 +1,20 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class FoodTruck implements Service {
-    String name;
-    ArrayList<String> list =new ArrayList<String>();
+    private String foodTruckName;
+    private List<String> foodTruckDishes;
     public FoodTruck(String name) {
-        this.name= name;
-        list.add("Бругер");
-        list.add("Хотдог");
-        list.add("Шаверма");
+        this.foodTruckName= name;
+        this.foodTruckDishes= new ArrayList<String>();
+        foodTruckDishes.add("Бругер");
+        foodTruckDishes.add("Хотдог");
+        foodTruckDishes.add("Шаверма");
 
     }
 
     public String cook(String dishName) {
-        if(list.contains(dishName)){
+        if(foodTruckDishes.contains(dishName)){
             return dishName;
         }
         return "Блюдо не найдено";
@@ -21,13 +23,13 @@ public class FoodTruck implements Service {
     @Override
     public boolean equals(Object obj) {
         if(obj instanceof FoodTruck) {
-            return this.name == ((FoodTruck) obj).name;
+            return this.foodTruckName == ((FoodTruck) obj).foodTruckName;
         }
         return false;
     }
 
     @Override
     public String toString() {
-        return "фуд-трак под названием "+this.name;
+        return "фуд-трак под названием "+this.foodTruckName;
     }
 }

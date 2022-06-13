@@ -1,19 +1,18 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Caffee implements Service{
-    String name;
-
-    ArrayList<String> list =new ArrayList<String>();
+    private String caffeeName;
+    private List<String> caffeeDishes;
     public Caffee(String name) {
-        this.name= name;
-        list.add("Кофе");
-        list.add("Роллы");
-        list.add("Цезарь");
-
+        this.caffeeName= name;
+        caffeeDishes= new ArrayList<String>();
+        caffeeDishes.add("Кофе");
+        caffeeDishes.add("Роллы");
+        caffeeDishes.add("Цезарь");
     }
-
     public String cook(String dishName) {
-        if(list.contains(dishName)){
+        if (caffeeDishes.contains(dishName)) {
             return dishName;
         }
         return "Блюдо не найдено";
@@ -22,13 +21,13 @@ public class Caffee implements Service{
     @Override
     public boolean equals(Object obj) {
         if(obj instanceof Caffee) {
-            return this.name == ((Caffee) obj).name;
+            return this.caffeeName == ((Caffee) obj).caffeeName;
         }
         return false;
     }
 
     @Override
     public String toString() {
-        return "Кафе под названием "+this.name;
+        return "Кафе под названием "+this.caffeeName;
     }
 }
