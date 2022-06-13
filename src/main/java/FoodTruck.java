@@ -1,30 +1,29 @@
+import java.util.ArrayList;
+
 public class FoodTruck implements Service {
     String name;
-    String dish;
+    ArrayList<String> list =new ArrayList<String>();
     public FoodTruck(String name) {
         this.name= name;
+        list.add("Бругер");
+        list.add("Хотдог");
+        list.add("Шаверма");
+
     }
 
-    public void cook(String dish) {
-        System.out.println("Готовим "+dish+" пожалуйста подождите");
-    }
-
-    public void sale(String dish) {
-        cook(dish);
-        System.out.println("ПРодано!");
-    }
-
-    public String getDish() {
-        return dish;
-    }
-
-    public void setDish(String dish) {
-        this.dish = dish;
+    public String cook(String dishName) {
+        if(list.contains(dishName)){
+            return dishName;
+        }
+        return "Блюдо не найдено";
     }
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if(obj instanceof FoodTruck) {
+            return this.name == ((FoodTruck) obj).name;
+        }
+        return false;
     }
 
     @Override

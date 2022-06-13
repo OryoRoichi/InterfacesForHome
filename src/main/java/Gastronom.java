@@ -1,30 +1,28 @@
+import java.util.ArrayList;
+
 public class Gastronom implements Service {
     String name;
-    String dish;
+    ArrayList<String> list =new ArrayList<String>();
     public Gastronom(String name) {
-        this.name=name;
-    }
+        this.name= name;
+        list.add("Курица Пикассо");
+        list.add("Рататуй");
+        list.add("Гратен дофинуа");
 
-    public void cook(String dish) {
-        System.out.println("Готовим "+dish+" пожалуйста подождите");
     }
-
-    public void sale(String dish) {
-        cook(dish);
-        System.out.println("ПРодано!");
-    }
-
-    public String getDish() {
-        return dish;
-    }
-
-    public void setDish(String dish) {
-        this.dish = dish;
+    public String cook(String dishName) {
+        if(list.contains(dishName)){
+            return dishName;
+        }
+        return "Блюдо не найдено";
     }
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if(obj instanceof Gastronom) {
+            return this.name == ((Gastronom) obj).name;
+        }
+        return false;
     }
 
     @Override

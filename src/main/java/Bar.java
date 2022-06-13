@@ -1,29 +1,30 @@
+import java.util.ArrayList;
+
 public class Bar implements Service{
     String name;
-    String dish;
+
     public Bar(String name) {
         this.name= name;
+        list.add("Авиация");
+        list.add("Белая леди");
+        list.add("Дерби");
+
     }
-    public void cook(String dish) {
-        System.out.println("Готовим "+dish+" пожалуйста подождите");
+    ArrayList<String> list =new ArrayList<String>();
+    public String cook(String dishName) {
+        if(list.contains(dishName)){
+            return dishName;
+        }
+        return "Блюдо не найдено";
     }
 
-    public void sale(String dish) {
-        cook(dish);
-        System.out.println("ПРодано!");
-    }
-
-    public String getDish() {
-        return dish;
-    }
-
-    public void setDish(String dish) {
-        this.dish = dish;
-    }
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if(obj instanceof Bar) {
+            return this.name == ((Bar) obj).name;
+        }
+        return false;
     }
 
     @Override

@@ -1,32 +1,30 @@
+import java.util.ArrayList;
+
 public class Caffee implements Service{
     String name;
-    String dish;
 
+    ArrayList<String> list =new ArrayList<String>();
     public Caffee(String name) {
-        this.name=name;
+        this.name= name;
+        list.add("Кофе");
+        list.add("Роллы");
+        list.add("Цезарь");
+
     }
 
-    public void cook(String dish) {
-        System.out.println("Готовим "+dish+" пожалуйста подождите");
-    }
-
-    public void sale(String dish, float cost) {
-        cook(dish);
-        System.out.println("ПРодано!");
-    }
-
-
-    public String getDish() {
-        return dish;
-    }
-
-    public void setDish(String dish) {
-        this.dish = dish;
+    public String cook(String dishName) {
+        if(list.contains(dishName)){
+            return dishName;
+        }
+        return "Блюдо не найдено";
     }
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if(obj instanceof Caffee) {
+            return this.name == ((Caffee) obj).name;
+        }
+        return false;
     }
 
     @Override
