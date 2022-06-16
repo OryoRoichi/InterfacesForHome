@@ -13,16 +13,14 @@ public class Gastronom implements Service {
 
     }
     public String cook(String dishName) {
-        if(gastronomDishes.contains(dishName)){
+        if (gastronomDishes.contains(dishName)) {
             return dishName;
         }
-        throw new DishNotFoundException();
+        throw new RuntimeException();
     }
     public String sale(float cash,String dishName) {
-        try {
-            if (cash - 4.75 < 1) throw new LessThenOneException();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        if (cash - 4.75f < 1) {
+            throw new LessThenOneException();
         }
         return cook(dishName);
     }

@@ -1,41 +1,49 @@
 import java.util.ArrayList;
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         ArrayList<Service> list = new ArrayList<Service>();
         list.add(new Caffee("Bob"));
         list.add(new Bar("bar de Joe"));
         list.add(new FoodTruck("Папа жарит "));
         list.add(new Gastronom("Катюша"));
 
-        test(list,true);//метод проверки работы метода COOK
+        test(list, true);//метод проверки работы метода COOK
 
-        for (Service elem: list) {
+        for (Service elem : list) {
             System.out.println(elem);
         }
     }
+
     public static void test(ArrayList<Service> list, boolean flag) {
-        if (flag==true) {
+        if (flag == true) {
             for (int i = 0; i < list.size(); i++) {
-                if (list.get(i) instanceof Gastronom) {
-                    System.out.println(list.get(i).cook("Рататуй"));
-                    System.out.println(list.get(i).sale(4.75f,"Рататуй"));
-                    System.out.println(list.get(i).cook("РататуQQQQ"));
-                }
-                if (list.get(i) instanceof FoodTruck) {
-                    System.out.println(list.get(i).cook("Хотдог"));
-                    System.out.println(list.get(i).cook("Колддог"));
-                }
                 if (list.get(i) instanceof Caffee) {
-                    System.out.println(list.get(i).cook("Кофе"));
-                    System.out.println(list.get(i).sale(4.75f,"Кофе"));
-                    System.out.println(list.get(i).cook("Авиация"));
-                }
-                if (list.get(i) instanceof Bar) {
-                    System.out.println(list.get(i).cook("Дерби"));
-                    System.out.println(list.get(i).cook("Гратен дофинуа"));
+                    try {
+                        System.out.println(list.get(i).cook("хофе"));
+                    } catch (DishNotFoundException e) {
+                        System.out.println("у нас нет такого блюда");
+                    }
+
+                    try {
+                        System.out.println(list.get(i).sale(4.75f, "хофе"));
+                    } catch (DishNotFoundException e) {
+                        System.out.println("у нас нет такого блюда");
+                        try {
+                            System.out.println(list.get(i).sale(5.75f, "Кофе"));
+                        } catch (DishNotFoundException ex) {
+                            throw new RuntimeException(ex);
+                        }
+
+                    } catch (LessThenOneException e) {
+
+                        System.out.println("дай другими деньгами");
+                    }
+
+
+                    System.out.println("тест завершен");
+
                 }
             }
-            System.out.println("тест завершен");
         }
     }
 }

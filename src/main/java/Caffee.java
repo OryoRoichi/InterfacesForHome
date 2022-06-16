@@ -11,19 +11,17 @@ public class Caffee implements Service{
         caffeeDishes.add("Роллы");
         caffeeDishes.add("Цезарь");
     }
-    public String cook(String dishName) {
+    public String cook(String dishName) throws DishNotFoundException {
         if (caffeeDishes.contains(dishName)) {
             return dishName;
         }
         throw new DishNotFoundException();
     }
 
-    public String sale(float cash,String dishName) {
-        try {
-            if (cash - 4.75 < 1) throw new LessThenOneException();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    public String sale(float cash,String dishName) throws DishNotFoundException ,LessThenOneException{
+            if (cash - 4.75f < 1) {
+                throw new LessThenOneException();
+            }
         return cook(dishName);
     }
 

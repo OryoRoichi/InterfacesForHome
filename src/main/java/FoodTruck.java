@@ -12,15 +12,15 @@ public class FoodTruck implements Service {
         foodTruckDishes.add("Шаверма");
 
     }
-    public String cook(String dishName) {
+    public String cook(String dishName) throws DishNotFoundException{
         if(foodTruckDishes.contains(dishName)){
             return dishName;
         }
         throw new DishNotFoundException();
     }
-    public String sale(float cash,String dishName) {
+    public String sale(float cash,String dishName) throws DishNotFoundException{
         try {
-            if (cash - 4.75 < 1) throw new LessThenOneException();
+            if (cash - 4.75f < 1) throw new LessThenOneException();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
