@@ -15,7 +15,16 @@ public class Caffee implements Service{
         if (caffeeDishes.contains(dishName)) {
             return dishName;
         }
-        return "Блюдо не найдено";
+        throw new DishNotFoundException();
+    }
+
+    public String sale(float cash,String dishName) {
+        try {
+            if (cash - 4.75 < 1) throw new LessThenOneException();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return cook(dishName);
     }
 
     @Override

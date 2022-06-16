@@ -12,14 +12,20 @@ public class FoodTruck implements Service {
         foodTruckDishes.add("Шаверма");
 
     }
-
     public String cook(String dishName) {
         if(foodTruckDishes.contains(dishName)){
             return dishName;
         }
-        return "Блюдо не найдено";
+        throw new DishNotFoundException();
     }
-
+    public String sale(float cash,String dishName) {
+        try {
+            if (cash - 4.75 < 1) throw new LessThenOneException();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return cook(dishName);
+    }
     @Override
     public boolean equals(Object obj) {
         if(obj instanceof FoodTruck) {

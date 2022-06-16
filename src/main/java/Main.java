@@ -7,7 +7,7 @@ public class Main {
         list.add(new FoodTruck("Папа жарит "));
         list.add(new Gastronom("Катюша"));
 
-        test(list,false);//метод проверки работы метода COOK
+        test(list,true);//метод проверки работы метода COOK
 
         for (Service elem: list) {
             System.out.println(elem);
@@ -18,6 +18,7 @@ public class Main {
             for (int i = 0; i < list.size(); i++) {
                 if (list.get(i) instanceof Gastronom) {
                     System.out.println(list.get(i).cook("Рататуй"));
+                    System.out.println(list.get(i).sale(4.75f,"Рататуй"));
                     System.out.println(list.get(i).cook("РататуQQQQ"));
                 }
                 if (list.get(i) instanceof FoodTruck) {
@@ -26,6 +27,7 @@ public class Main {
                 }
                 if (list.get(i) instanceof Caffee) {
                     System.out.println(list.get(i).cook("Кофе"));
+                    System.out.println(list.get(i).sale(4.75f,"Кофе"));
                     System.out.println(list.get(i).cook("Авиация"));
                 }
                 if (list.get(i) instanceof Bar) {
